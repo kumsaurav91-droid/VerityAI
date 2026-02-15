@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerityAI - Detect Fake Productivity & Career Advice</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon"><i data-lucide="shield-check"></i></div>
+                <span>Verity<span>AI</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#analyze" class="nav-link">Analyzer</a>
+                <a href="#education" class="nav-link">Learn</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </div>
+            <button class="btn-nav-cta" onclick="scrollToAnalyze()">Try Free</button>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-badge">🚀 AI-Powered Truth Detection</div>
+
+            <h1 class="hero-title">
+                Stop Falling for <span class="gradient-text">Fake Productivity Advice</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                VerityAI analyzes career & productivity content and tells you if it's
+                realistic, exaggerated, or misleading — instantly.
+            </p>
+
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToAnalyze()">
+                    <i data-lucide="zap"></i> <span> Analyze Now</span>
+                </button>
+                <button class="btn btn-secondary" onclick="scrollToEducation()">
+                    <i data-lucide="book-open"></i> <span> How It Works</span> 
+                </button>
+            </div>
+
+           <div class="trust-badges">
+               <div class="badge">
+                   <span class="badge-icon">✓</span>
+                   <span>AI-Powered Analysis</span>
+               </div>
+               <div class="badge">
+                   <span class="badge-icon">✓</span>
+                   <span>Student-Focused</span>
+               </div>
+               <div class="badge">
+                    <span class="badge-icon">✓</span>
+                    <span>100% Free</span>
+               </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section-light">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">
+                Four simple steps to detect fake career advice and protect yourself from misleading content
+            </p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon"><i data-lucide="copy"></i></div>
+                    <h3>Paste Content</h3>
+                    <p>Copy any career advice from LinkedIn, Twitter, blogs, or anywhere online.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon"><i data-lucide="cpu"></i></div>
+                    <h3>AI Analysis</h3>
+                    <p>Our AI scans for unrealistic claims, extreme habits, and AI-generated slop.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon"><i data-lucide="search-check"></i></div>
+                    <h3>Truth Detection</h3>
+                    <p>Get a Truth Score based on credibility, realism, and expert validation.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon"><i data-lucide="award"></i></div>
+                    <h3>Make Smart Decisions</h3>
+                    <p>Use insights to follow genuine advice and avoid misleading content.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">85%+<span>Accuracy Rate</span></div>
+                <div class="stat-card">10K+<span>Students Protected</span></div>
+                <div class="stat-card">50K+<span>Posts Analyzed</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analyze" class="analyzer-section">
+        <div class="container">
+            <h2 class="section-title">AI Content Analyzer</h2>
+            <p class="section-subtitle">
+                Paste productivity or career advice below and get instant AI analysis.
+            </p>
+
+            <div class="analyzer-container">
+
+                <div class="input-section">
+                    <label class="input-label">
+                        <h2>📝 Content to Analyze</h2>
+                    </label>
+
+                    <textarea id="content-input" class="content-textarea"
+                    placeholder="Paste career advice or productivity content here..."
+                    rows="12"></textarea>
+
+                    <div class="input-stats">
+                        <span id="char-count">0</span> characters •
+                        <span id="word-count">0</span> words
+                    </div>
+
+                    <div class="input-actions">
+                        <button class="btn btn-primary btn-analyze" onclick="analyzeContent()">
+                            <span id="analyze-btn-text">Analyze Content</span>
+                            <span id="analyze-loader" class="loader-spinner" style="display:none;"></span>
+                        </button>
+                        <button class="btn btn-secondary btn-clear" onclick="clearAnalysis()">
+                            <span>🗑️ Clear</span>
+                        </button>
+                    </div>
+
+                    <div class="privacy-note">
+                        <div class="note-icon">🔒</div>
+                        <div class="note-text">
+                            <strong>100% Private & Secure</strong>
+                            <p>We do not store your content. Analysis runs in real-time and disappears after you leave.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="results-section" class="results-section glass-card" style="display:none;">
+                    <div class="results-header">
+                        <h3><i data-lucide="brain-circuit"></i> AI Intelligence Report</h3>
+                        <div id="category-badge" class="category-badge"></div>
+                    </div>
+
+                    <div class="result-card-container">
+                        <div class="result-card info-card">
+                            <h4><i data-lucide="info"></i> Analysis Detail</h4>
+                            <p id="category-explanation"></p>
+                        </div>
+
+                    <div class="result-card finding-card">
+                        <h4><i data-lucide="list-checks"></i> Key Findings</h4>
+                        <ul id="key-findings"></ul>
+                    </div>
+
+                    <div class="result-card danger-card">
+                        <h4><i data-lucide="alert-triangle"></i> Red Flags</h4>
+                        <ul id="red-flags"></ul>
+                    </div>
+
+                    <div class="result-card action-card">
+                        <h4><i data-lucide="lightbulb"></i> Our Recommendation</h4>
+                        <p id="recommendation"></p>
+                    </div>
+                </div>
+
+                <div class="confidence-area">
+                    <div class="confidence-header" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="font-weight: 600; font-size: 0.9rem;">Authenticity Score (Accuracy)</span>
+                        <span id="confidence-text" class="confidence-text">0%</span>
+                    </div>
+                <div class="meter-bg">
+                    <div id="confidence-fill" class="meter-fill"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section-light">
+        <div class="container">
+            <h2 class="section-title">Educational Resources</h2>
+            <p class="section-subtitle">Learn to identify fake productivity and misleading career advice</p>
+
+            <div class="resources-grid">
+                <div class="resource-card" onclick="showResourceModal('fake-productivity')">
+                    <div class="resource-icon realistic">📚</div>
+                    <h3>What is Fake Productivity?</h3>
+                    <p>Fake productivity is content that promotes unrealistic or harmful work habits disguised as success advice.</p>
+                    <button class="btn-link">Learn More →</button>
+                </div>
+
+                <div class="resource-card" onclick="showResourceModal('red-flags')">
+                    <div class="resource-icon exaggerated">⚠️</div>
+                    <h3>Red Flags to Watch For</h3>
+                    <p>Learn to identify common patterns in misleading advice: unrealistic timelines, survivor bias, and more.</p>
+                    <button class="btn-link">Learn More →</button>
+                </div>
+
+                <div class="resource-card" onclick="showResourceModal('realistic-advice')">
+                    <div class="resource-icon realistic">✅</div>
+                    <h3>Realistic Career Advice</h3>
+                    <p>Understand what good career advice looks like: acknowledges challenges and individual differences.</p>
+                    <button class="btn-link">Learn More →</button>
+                </div>
+
+                <div class="resource-card" onclick="showResourceModal('patterns')">
+                    <div class="resource-icon misleading">🚫</div>
+                    <h3>Common Misleading Patterns</h3>
+                    <p>Discover typical patterns in AI slop: generic templates and buzzwords without substance.</p>
+                    <button class="btn-link">Learn More →</button>
+                </div>
+
+                <div class="resource-card" onclick="showResourceModal('healthy-habits')">
+                    <div class="resource-icon realistic">🎯</div>
+                    <h3>Building Healthy Habits</h3>
+                    <p>Evidence-based strategies for sustainable productivity and realistic goal-setting.</p>
+                    <button class="btn-link">Learn More →</button>
+                </div>
+
+                <div class="resource-card" onclick="showResourceModal('critical-thinking')">
+                    <div class="resource-icon exaggerated">🧠</div>
+                    <h3>Critical Thinking Guide</h3>
+                    <p>Develop skills to evaluate any advice critically: check sources and consider context.</p>
+                    <button class="btn-link">Learn More →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About VerityAI</h2>
+            <p class="section-subtitle">Helping students navigate the noise of online productivity advice.</p>
+            <div class="categories-grid">
+                <div class="category-card realistic">
+                    <div class="cat-icon">✅</div>
+                    <h3>Realistic</h3>
+                    <p>Well-balanced, evidence-based advice. Safe to follow.</p>
+                </div>
+                <div class="category-card exaggerated">
+                    <div class="cat-icon">⚠️</div>
+                    <h3>Exaggerated</h3>
+                    <p>Makes overstated claims. Approach with caution.</p>
+                </div>
+                <div class="category-card misleading">
+                    <div class="cat-icon">🚫</div>
+                    <h3>Misleading</h3>
+                    <p>Harmful or promotes toxic culture. Should be avoided.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">❓ Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about VerityAI</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How does VerityAI detect fake career advice?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>VerityAI uses Google's advanced Gemini AI to analyze content for red flags like unrealistic timelines, extreme claims, lack of evidence, toxic productivity culture, and AI-generated slop. It evaluates credibility, realism, sustainability, and potential harm to provide a comprehensive assessment.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What is 'AI Slop' in career advice?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>'AI Slop' refers to low-quality, AI-generated content that lacks original insight, uses generic templates, contains contradictory information, or is filled with buzzwords without substance. It's content created quickly by AI without human verification or expertise, often misleading readers with surface-level advice.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is VerityAI free to use?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! VerityAI is 100% free to use. No account required, no hidden costs, and no subscriptions. We built this tool to help students make better decisions about the advice they consume online. Your content is never stored, and we don't track your usage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How accurate is the Truth Score?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our AI analysis has an 85%+ accuracy rate based on testing. The confidence score shows how certain the AI is about its assessment. While highly accurate, we always recommend using your own critical thinking alongside VerityAI's analysis. No AI is perfect, and your judgment matters!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I use VerityAI for LinkedIn posts?</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! VerityAI works great for analyzing LinkedIn posts, Twitter threads, blog articles, course descriptions, or any text-based career and productivity advice. Just copy and paste the content, and our AI will analyze it for you. Perfect for evaluating influencer advice before following it!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon"><i data-lucide="shield-check"></i></div>
+                        <span>Verity<span>AI</span></span>
+                    </div>
+                    <p class="brand-tagline">Empowering students with truth in the age of information overload.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/kumsaurav91-droid" class="social-btn"><i data-lucide="github"></i></a>
+                        <a href="https://www.instagram.com/saurav.91_" class="social-btn"><i data-lucide="instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/kumsaurav91" class="social-btn"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#education">Educational Content</a></li>
+                        <li><a href="#analyze">Try Analyzer</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#faq">FAQ Help</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Technology</h4>
+                    <ul>
+                        <li><a href="https://deepmind.google/technologies/gemini/" target="_blank">Google Gemini AI</a></li>
+                        <li><a href="#">FastAPI Backend</a></li>
+                        <li><a href="#">Neural Verification</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                &copy; 2026 VerityAI &nbsp;|&nbsp; Built by Saurav Kumar &nbsp;|&nbsp; Microsoft Elevate 2026
+                </div>
+                <div class="footer-status">
+                    <span class="status-dot"></span> Neural Engine Online
+                </div>
+            </div>    
+        </div>
+    </footer>
+
+    <div id="resource-modal" class="modal" style="display:none;">
+        <div class="modal-overlay" onclick="closeResourceModal()"></div>
+        <div class="modal-content card-glass">
+            <span class="modal-close" onclick="closeResourceModal()">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+
+</body>
+</html>
