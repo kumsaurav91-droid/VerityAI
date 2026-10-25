@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>History | VerityAI</title>
+<meta name="description" content="Your saved checks. They are stored only in this browser.">
+<meta name="theme-color" content="#1b3cff">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="manifest" href="/assets/manifest.webmanifest">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="/scripts/theme.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+<noscript><div class="wrap"><p class="notice">VerityAI needs JavaScript to run. Please turn it on in your browser.</p></div></noscript>
+<div class="wrap page-head">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>History</span></nav>
+  <h1 class="page-title">History</h1>
+  <p class="lead">Your earlier checks. They are saved only in this browser, never on a server.</p>
+</div>
+<div class="wrap history">
+  <div id="hEmpty" class="state" hidden>
+    <h2>No checks yet</h2><p>When you check something, the result is saved here so you can find it later.</p>
+    <a class="btn primary" href="/check">Check something</a>
+  </div>
+  <div id="hTools" class="h-tools" hidden>
+    <label class="sr" for="hSearch">Search your checks</label>
+    <input id="hSearch" type="search" placeholder="Search your checks">
+    <label class="sr" for="hKind">Filter by type</label>
+    <select id="hKind"><option value="">All types</option><option value="advice">Advice or post</option><option value="course">Course or program</option><option value="job">Job offer or message</option></select>
+    <label class="sr" for="hCategory">Filter by verdict</label>
+    <select id="hCategory"></select>
+    <button class="btn secondary small" id="hClear" type="button">Clear history</button>
+  </div>
+  <p class="h-count" id="hCount" aria-live="polite"></p>
+  <div id="hNone" class="state" hidden><h2>No checks match</h2><p>Try a different search or filter.</p><button class="btn secondary" id="hReset" type="button">Reset filters</button></div>
+  <ul class="h-list" id="hList"></ul>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/scripts/common.js"></script>
+<script src="/scripts/layout.js"></script>
+<script src="/scripts/history.js"></script>
+</body>
+</html>

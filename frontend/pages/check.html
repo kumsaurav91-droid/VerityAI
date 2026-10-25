@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Check something | VerityAI</title>
+<meta name="description" content="Check career advice, a course or a job offer. Paste text, add a link, or upload a screenshot or PDF.">
+<meta name="theme-color" content="#1b3cff">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="manifest" href="/assets/manifest.webmanifest">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="/scripts/theme.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+<noscript><div class="wrap"><p class="notice">VerityAI needs JavaScript to run. Please turn it on in your browser.</p></div></noscript>
+<div class="wrap page-head">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span id="crumbName">Check something</span></nav>
+  <h1 class="page-title" id="pageTitle">Check something</h1>
+  <p class="lead" id="pageLead"></p>
+</div>
+<section class="wrap check-body">
+  <div class="analyzer">
+    <div class="kinds" role="radiogroup" aria-labelledby="kindsH">
+      <p class="kinds-h" id="kindsH">What do you want to check?</p>
+      <label class="kind"><input type="radio" name="kind" value="advice" checked><b>Advice or a post</b><span>A reel, LinkedIn post or thread on how to succeed</span></label>
+      <label class="kind"><input type="radio" name="kind" value="course"><b>A course or program</b><span>A webinar, sales page or placement promise, before you pay</span></label>
+      <label class="kind"><input type="radio" name="kind" value="job"><b>A job offer or message</b><span>A recruiter message on WhatsApp, Telegram or email</span></label>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="How to add it">
+      <button role="tab" aria-selected="true" data-mode="text">Paste text</button>
+      <button role="tab" aria-selected="false" data-mode="url">Add link</button>
+      <button role="tab" aria-selected="false" data-mode="image">Screenshot</button>
+      <button role="tab" aria-selected="false" data-mode="pdf">PDF</button>
+    </div>
+
+    <div class="pane" data-pane="text">
+      <label class="sr" for="text">Content to check</label>
+      <textarea id="text" rows="8" maxlength="8000" placeholder="Paste a LinkedIn post, a reel caption, a thread..."></textarea>
+      <div class="meta"><span id="counter">0 / 8,000</span></div>
+      <div class="examples" id="examples" aria-label="Try an example"></div>
+    </div>
+
+    <div class="pane" data-pane="url" hidden>
+      <label class="sr" for="url">Link to an article, post or YouTube video</label>
+      <input id="url" type="url" inputmode="url" placeholder="https://example.com/how-i-got-hired-in-30-days">
+      <p class="hint">Works with blogs, articles, public pages and YouTube videos. Sites that need a login (Instagram, X) can't be read, so paste the text or use a screenshot instead.</p>
+    </div>
+
+    <div class="pane" data-pane="file" hidden>
+      <label class="drop" id="drop" for="file">
+        <input id="file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+        <img id="preview" alt="Uploaded screenshot preview" hidden>
+        <span id="dropText">Drop a screenshot here, click to choose, or paste an image with Ctrl+V</span>
+      </label>
+      <button type="button" class="btn quiet small" id="removeImg" hidden>Remove file</button>
+      <p class="hint">JPG, PNG, WebP or PDF, up to 4 MB.</p>
+    </div>
+
+    <div id="notice" class="notice" role="alert" hidden></div>
+
+    <div class="actions">
+      <button class="btn primary large" id="analyzeBtn" type="button"><span id="analyzeLabel">Check this advice</span></button>
+      <button class="btn secondary large" id="clearBtn" type="button">Clear</button>
+      <span class="shortcut">or press Ctrl + Enter</span>
+    </div>
+  </div>
+  <p class="hint check-note">Your result opens on its own page and is saved in this browser. See <a href="/history">History</a>.</p>
+</section>
+
+</main>
+<div id="site-footer"></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/scripts/common.js"></script>
+<script src="/scripts/layout.js"></script>
+<script src="/scripts/check.js"></script>
+</body>
+</html>

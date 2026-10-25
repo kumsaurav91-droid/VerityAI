@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Result | VerityAI</title>
+<meta name="description" content="Your VerityAI result: verdict, risk score, evidence and next steps.">
+<meta name="theme-color" content="#1b3cff">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="manifest" href="/assets/manifest.webmanifest">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="/scripts/theme.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+<noscript><div class="wrap"><p class="notice">VerityAI needs JavaScript to run. Please turn it on in your browser.</p></div></noscript>
+
+<div class="wrap page-head tight">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/history">History</a><span aria-hidden="true">/</span><span>Result</span></nav>
+</div>
+<div class="wrap results">
+  <div id="rLoading" class="state"><span class="spinner" aria-hidden="true"></span><p>Loading your result...</p></div>
+  <div id="rMissing" class="state" hidden>
+    <h1>We could not find this result</h1>
+    <p>Results are saved only in the browser where you ran the check, so it may have been deleted or opened on another device.</p>
+    <div class="state-actions"><a class="btn primary" href="/check">Check something</a><a class="btn secondary" href="/history">Open History</a></div>
+  </div>
+
+  <div id="rContent" class="r-grid" hidden>
+    <article class="verdict" id="verdict">
+      <div class="gauge">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" class="g-track"/><circle cx="60" cy="60" r="52" class="g-fill" id="gaugeFill" transform="rotate(-90 60 60)"/></svg>
+        <div class="g-num"><strong id="scoreNum">0</strong><span>Risk score</span></div>
+      </div>
+      <div class="v-body">
+        <div class="v-top"><h1 class="badge" id="badge"></h1></div>
+        <p class="v-meta" id="metaLine"></p>
+        <p class="v-summary" id="summary"></p>
+        <p class="notice info" id="demoNote" hidden>Demo mode: this result comes from a simple keyword check, not real AI. Add a Gemini API key in backend/.env for real analysis.</p>
+      </div>
+    </article>
+
+    <div class="r-actions" role="group" aria-label="Result actions">
+      <a class="btn primary small" href="/check">Check another claim</a>
+      <button class="btn secondary small" id="copyBtn" type="button"><svg class="i" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>Copy summary</button>
+      <button class="btn secondary small" id="waBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.2A8 8 0 1 1 21 12z"/></svg>Share on WhatsApp</button>
+      <button class="btn secondary small" id="shareBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Save share image</button>
+      <button class="btn secondary small" id="pdfBtn" type="button"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Export PDF</button>
+      <button class="btn secondary small" id="askBtn" type="button" disabled title="Planned, not available yet">Ask AI <span class="pill">Soon</span></button>
+    </div>
+
+    <section class="conf" id="conf" data-level="pending" aria-labelledby="confH">
+      <div><h2 id="confH">Evidence confidence</h2><p class="conf-note">How well the claims in this text could be checked against sources. It is separate from the risk score.</p></div>
+      <div class="conf-body"><b id="confLevel">Not checked yet</b><p id="confText">Run the claim check below to see how many claims can be verified.</p></div>
+    </section>
+
+    <section id="factsWrap" hidden><h2 id="factsTitle">What it says</h2><dl class="facts" id="facts"></dl></section>
+
+    <section id="domainWrap" hidden>
+      <h2>Sender and link check</h2>
+      <ul class="domains" id="domains"></ul>
+      <p class="hint">Based on public registration records. A new domain is a warning sign, not proof.</p>
+    </section>
+
+    <div class="cols">
+      <section class="doc-col">
+        <h2>The original, marked up</h2>
+        <div class="paper" id="annotated"></div>
+        <h3 class="sub">Red flags</h3>
+        <ul class="flags" id="flags"></ul>
+      </section>
+      <aside class="side-col">
+        <h2>Risk profile</h2>
+        <div id="radar" class="radar"></div>
+        <p class="hint">A bigger shape means more risk. Weak evidence is the reverse of evidence quality.</p>
+      </aside>
+    </div>
+
+    <div class="cols two">
+      <section><h2>What stood out</h2><ul class="plain" id="findings"></ul></section>
+      <section><h2 id="askTitle">Ask the creator</h2><ol class="plain" id="questions"></ol></section>
+    </div>
+
+    <section id="checkWrap" hidden><h2 id="checkTitle">Before you trust it</h2><ul class="checks" id="checklist"></ul></section>
+
+    <aside id="helpBox" class="help" hidden>
+      <b>Already paid, or shared an OTP or bank details?</b>
+      <p>Call the national cyber crime helpline <strong>1930</strong> right away and report at <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a>. Do not pay anything more to "release" a refund or a job.</p>
+    </aside>
+
+    <section id="claimsWrap">
+      <div class="rw-head"><h2>Claim verification</h2><button class="btn secondary small" id="claimsBtn" type="button">Check claims with sources</button></div>
+      <p class="hint" id="claimsHint">Searches the web for the specific numbers and promises in this text and shows the sources it used. "Could not verify" means no reliable source was found, not that the claim is false.</p>
+      <ul class="claims" id="claims"></ul>
+      <h3 class="sub" id="srcTitle" hidden>Source references</h3>
+      <ul class="sources" id="sources"></ul>
+    </section>
+
+    <section class="rewrite">
+      <div class="rw-head"><h2 id="rewriteTitle">The honest version</h2><button class="btn quiet small" id="copyRewrite" type="button">Copy</button></div>
+      <p class="paper" id="rewrite"></p>
+      <p class="next"><b>Your next step:</b> <span id="recommendation"></span></p>
+      <p class="disclaimer">This is a second opinion from an AI, not a ruling. Check the quoted phrases yourself before you act.</p>
+    </section>
+
+    <section class="feedback" id="feedback">
+      <b>Was this result helpful?</b>
+      <div class="fb-btns">
+        <button class="btn secondary small" type="button" data-fb="up">Yes</button>
+        <button class="btn secondary small" type="button" data-fb="down">Not really</button>
+        <button class="btn secondary small" type="button" data-fb="wrong">This looks wrong</button>
+      </div>
+      <div id="fbMore" hidden>
+        <label class="sr" for="fbText">What looked wrong?</label>
+        <textarea id="fbText" rows="2" maxlength="300" placeholder="What looked wrong? (optional)"></textarea>
+        <button class="btn primary small" id="fbSend" type="button">Send feedback</button>
+      </div>
+      <p class="hint" id="fbThanks" hidden>Thank you. This helps improve VerityAI.</p>
+    </section>
+  </div>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/scripts/common.js"></script>
+<script src="/scripts/layout.js"></script>
+<script src="/scripts/results.js"></script>
+</body>
+</html>

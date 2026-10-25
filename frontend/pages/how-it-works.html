@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works | VerityAI</title>
+<meta name="description" content="How VerityAI reads, scores and verifies what you submit, and what it cannot determine.">
+<meta name="theme-color" content="#1b3cff">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="manifest" href="/assets/manifest.webmanifest">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="/scripts/theme.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+<noscript><div class="wrap"><p class="notice">VerityAI needs JavaScript to run. Please turn it on in your browser.</p></div></noscript>
+<div class="wrap page-head">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>How it works</span></nav>
+  <h1 class="page-title">How it works</h1>
+  <p class="lead">VerityAI reads what you submit, looks for warning signs, checks claims against sources when it can, and shows its reasoning. Here is each step, and where it stops.</p>
+</div>
+<div class="wrap prose-wrap">
+  <nav class="toc" aria-label="On this page"><b>On this page</b>
+    <a href="#submit">1. Submitting content</a><a href="#claims">2. Extracting claims</a><a href="#risk">3. Evaluating risk</a><a href="#evidence">4. Checking evidence</a><a href="#interpret">5. Reading a result</a><a href="#limits">6. What it cannot determine</a><a href="#example">Example workflow</a></nav>
+  <div class="prose">
+    <section id="submit"><h2>1. How you submit content</h2>
+      <p>Start by choosing what you are checking: advice or a post, a course or program, or a job offer. Each type is judged by its own rules.</p>
+      <p>Then add the content in the way that suits you: paste text (up to 8,000 characters), add a link to a page or a public YouTube video, or upload a screenshot or PDF of up to 4 MB. Screenshots and PDFs are read by the AI to pull out their text, so the original wording can be marked up.</p></section>
+    <section id="claims"><h2>2. How claims are extracted</h2>
+      <p>The AI reads the content and picks out the specific claims that can be checked, such as salaries, guarantees, statistics and rules. It skips opinions. It also copies the exact phrases that worry it, so they can be highlighted in your own text with a reason next to each one.</p></section>
+    <section id="risk"><h2>3. How risk indicators are evaluated</h2>
+      <p>Two layers work together. First, simple automatic checks look for known warning patterns: a request for money, a free email address, WhatsApp or Telegram contact, an OTP, a job or placement guarantee, or rewards for recruiting others.</p>
+      <p>Then the AI judges four things on a scale of 0 to 100: hype, burnout risk, hidden selling and evidence quality. These become the risk profile. For job offers, a real request for money limits how favourable the result can be, whatever else the message says.</p></section>
+    <section id="evidence"><h2>4. How evidence is checked</h2>
+      <p>For job and course checks, the sender and link check looks up how old an email or website domain is, using public registration records. It also flags free email addresses and link shorteners.</p>
+      <p>On a result page you can run a claim check. The AI searches the web for the specific claims and marks each one as supported, disputed, misleading or could not verify, and lists the sources it used. Evidence confidence then summarises how many claims could be checked. It only appears after you run the claim check, and it is never guessed.</p></section>
+    <section id="interpret"><h2>5. How to read a result</h2>
+      <p>The <b>risk score</b> runs from 0 to 100, and higher means more warning signs. 0 to 30 means few warning signs, 31 to 60 means exaggerated or suspicious, and 61 to 100 means high risk.</p>
+      <p><b>Evidence confidence</b> is a separate measure. It tells you how well the claims could be verified, not how risky the content is. A message can be high risk even when its claims are easy to check, and a low-risk message can have claims that cannot be verified.</p>
+      <p>Use the questions to ask, the checklist and the honest rewrite to decide what to do next. You can share a result on WhatsApp, save a share image or export a PDF.</p></section>
+    <section id="limits"><h2>6. What the AI cannot reliably determine</h2>
+      <ul>
+        <li>Whether a company or person is real. Always check the official website, and never pay to get a job.</li>
+        <li>Anything private, such as whether money was really paid or what was said in a call.</li>
+        <li>Claims that have no public sources. "Could not verify" does not mean a claim is false.</li>
+        <li>Context it cannot see, such as sarcasm, a missing earlier message or a local custom.</li>
+        <li>Videos beyond the first 10 minutes, and pages that need a login.</li>
+      </ul>
+      <p>The AI can also simply be wrong. Treat every result as a second opinion and check the quoted phrases yourself.</p></section>
+    <section id="example"><h2>Example workflow</h2>
+      <p class="hint">An illustrative example. The numbers are made up to show the steps, not a real check.</p>
+      <ol class="flow">
+        <li><b>Choose:</b> a student gets a WhatsApp message and picks <i>A job offer or message</i>.</li>
+        <li><b>Submit:</b> they paste "You are selected for data entry at Rs 45,000 a month. Pay a Rs 1,800 registration fee to confirm. HR is on WhatsApp only: hr.jobs@gmail.com".</li>
+        <li><b>Automatic checks:</b> a fee request, a free email address and WhatsApp-only contact are found.</li>
+        <li><b>Result:</b> a high risk score and a "High scam risk" verdict, with "Pay a Rs 1,800 registration fee" highlighted and the reason shown.</li>
+        <li><b>Next steps:</b> do not pay, verify the company on its official site, and call 1930 if money was already sent.</li>
+      </ol>
+      <p><a class="btn primary" href="/check">Try it yourself</a></p></section>
+  </div>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/scripts/common.js"></script>
+<script src="/scripts/layout.js"></script>
+</body>
+</html>

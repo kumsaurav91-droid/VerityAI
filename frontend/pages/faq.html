@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ | VerityAI</title>
+<meta name="description" content="Answers about what VerityAI is, how it works, what results mean and how your data is used.">
+<meta name="theme-color" content="#1b3cff">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icon-192.png">
+<link rel="manifest" href="/assets/manifest.webmanifest">
+
+<link rel="stylesheet" href="/styles.css">
+<script src="/scripts/theme.js"></script>
+</head>
+<body>
+<div id="site-header"></div>
+<main id="main">
+<noscript><div class="wrap"><p class="notice">VerityAI needs JavaScript to run. Please turn it on in your browser.</p></div></noscript>
+<div class="wrap page-head">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>FAQ</span></nav>
+  <h1 class="page-title">Frequently asked questions</h1>
+  <p class="lead">Short answers about what VerityAI is, how to read a result, and what it cannot do.</p>
+</div>
+<div class="wrap faq-page">
+  <div class="faq-tools">
+    <label class="sr" for="fSearch">Search the questions</label>
+    <input id="fSearch" type="search" placeholder="Search the questions">
+    <div class="chips" id="fCats" role="group" aria-label="Question categories"></div>
+  </div>
+  <div id="fList" class="faq-list"></div>
+  <div id="fNone" class="state" hidden><h2>No questions match</h2><p>Try different words, or ask us on GitHub.</p><button class="btn secondary" id="fReset" type="button">Reset search</button></div>
+  <p class="hint">Still have a question? <a href="https://github.com/kumsaurav91-droid/VerityAI/issues" target="_blank" rel="noopener">Ask on GitHub</a>.</p>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="/scripts/common.js"></script>
+<script src="/scripts/layout.js"></script>
+<script src="/scripts/faq.js"></script>
+</body>
+</html>
